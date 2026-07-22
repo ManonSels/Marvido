@@ -6,10 +6,9 @@
 
 body {
     font-family: Arial, sans-serif;
+    color: var(--text-color);
 }
 
-section {
-    min-height: 100vh;
-    padding: 4rem;
-    border-bottom: 1px solid #ddd;
+a {
+    text-decoration: none;
 }
