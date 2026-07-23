@@ -92,7 +92,7 @@
     display: block;
     width: 100%;
 
-    padding: 8px 0;
+    padding: 8px 8px;
 
     background: none;
     border: none;
@@ -168,7 +168,7 @@
         top: 80px;
         right: 0;
 
-        width: 50%;
+        width: calc(100px + 10%);
         height: calc(100vh - 80px);
 
         padding: 40px 30px;

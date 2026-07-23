@@ -1,0 +1,28 @@
+export function Hero() {
+    return `
+        <section class="hero">
+
+            <video class="hero-video" autoplay muted loop playsinline>
+                <source src="/assets/videos/herovideo.mp4" type="video/mp4">
+            </video>
+
+            <div class="hero-overlay"></div>
+
+            <div class="hero-content">
+
+                <h1>Marvido</h1>
+
+                <p>Luxury getaway in Costa Blanca</p>
+
+                <div class="hero-buttons">
+                    <a href="/availability" class="btn btn-primary" data-link>Check Availability</a>
+                    <a href="/contact" class="btn btn-secondary" data-link>Contact Us</a>
+                </div>
+
+            </div>
+
+            <div class="hero-scroll">↓ Scroll Down</div>
+
+        </section>
+    `;
+}

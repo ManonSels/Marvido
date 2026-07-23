@@ -1,6 +1,7 @@
 import { Home } from "./pages/home.js";
 import { Gallery } from "./pages/gallery.js";
 import { Availability } from "./pages/availability.js";
+import { Location } from "./pages/location.js";
 import { Contact } from "./pages/contact.js";
 
 
@@ -8,6 +9,7 @@ const routes = {
     "/": Home,
     "/gallery": Gallery,
     "/availability": Availability,
+    "/location": Location,
     "/contact": Contact
 };
 
