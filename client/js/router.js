@@ -1,5 +1,5 @@
 import { Home } from "./pages/home.js";
-import { Gallery } from "./pages/gallery.js";
+import { Gallery, initGallery } from "./pages/gallery.js";
 import { Availability } from "./pages/availability.js";
 import { Location } from "./pages/location.js";
 import { Contact } from "./pages/contact.js";
@@ -21,6 +21,10 @@ export function Router() {
     const page = routes[path] || Home;
 
     document.querySelector("#app").innerHTML = page();
+
+    if (path === "/gallery") {
+        initGallery();
+    }
 
 }
 

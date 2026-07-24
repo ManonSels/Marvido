@@ -10,9 +10,12 @@ export function Hero() {
 
             <div class="hero-content">
 
-                <h1>Marvido</h1>
+                <div class="hero-text">
+                    <h1>Marvido</h1>
+                    <p>Your getaway in Costa Blanca</p>
+                </div>
 
-                <p>Luxury getaway in Costa Blanca</p>
+                <div class="hero-bar"></div>
 
                 <div class="hero-buttons">
                     <a href="/availability" class="btn btn-primary" data-link>Check Availability</a>
