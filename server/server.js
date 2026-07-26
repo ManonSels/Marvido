@@ -1,18 +1,25 @@
 const express = require("express");
 const cors = require("cors");
 const path = require("path");
+const cookieParser = require("cookie-parser");
 require("dotenv").config();
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, "../client")));
 
-app.get("/api/test", (req, res) => {
-    res.json({ message: "Server works!" });
-});
+const authRoutes = require("./routes/authRoutes");
+const { requireAdmin } = require("./middleware/auth");
+const adminRoutes = require("./routes/admin");
+const apiRoutes = require("./routes/api");
+
+app.use("/api/auth", authRoutes);
+app.use("/api/admin", requireAdmin, adminRoutes);
+app.use("/api", apiRoutes);
 
 app.get("/{*splat}", (req, res) => {
     res.sendFile(path.join(__dirname, "../client/index.html"));

@@ -1,1 +1,172 @@
-/* Admin page styles (moved from root) */
+.admin-login {
+    max-width: 360px;
+    margin: 60px auto;
+
+    text-align: center;
+}
+
+.admin-login h1 {
+    font-size: 28px;
+    font-weight: 800;
+
+    margin-bottom: 24px;
+}
+
+#admin-login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+#admin-password {
+    padding: 14px 16px;
+
+    border: 1px solid #ddd;
+
+    font-size: 15px;
+}
+
+#admin-login-form button {
+    padding: 14px 16px;
+
+    background: black;
+    color: white;
+
+    border: none;
+
+    font-weight: 700;
+    font-size: 15px;
+
+    cursor: pointer;
+
+    transition: opacity 0.2s ease;
+}
+
+#admin-login-form button:hover {
+    opacity: 0.8;
+}
+
+.admin-error {
+    margin-top: 14px;
+
+    color: #c0392b;
+    font-size: 14px;
+}
+
+.admin-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 30px;
+}
+
+.admin-header h1 {
+    font-size: 28px;
+    font-weight: 800;
+}
+
+.admin-header button {
+    padding: 10px 20px;
+
+    background: none;
+    border: 1px solid black;
+
+    font-weight: 600;
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.admin-header button:hover {
+    background: black;
+    color: white;
+}
+
+.admin-instructions {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 24px;
+}
+
+.admin-list-title {
+    font-size: 20px;
+    font-weight: 800;
+
+    margin: 40px 0 16px;
+}
+
+.admin-booking-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 14px 0;
+
+    border-bottom: 1px solid #eee;
+
+    font-size: 15px;
+}
+
+.admin-delete-btn {
+    background: none;
+    border: 1px solid #c0392b;
+
+    color: #c0392b;
+
+    padding: 6px 14px;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.admin-delete-btn:hover {
+    background: #c0392b;
+    color: white;
+}
+
+.admin-empty {
+    color: #999;
+    font-size: 14px;
+}
+
+.admin-note-input {
+    width: 100%;
+    max-width: 400px;
+
+    padding: 12px 16px;
+
+    border: 1px solid #ddd;
+
+    font-size: 14px;
+
+    margin-bottom: 24px;
+}
+
+.admin-booking-row {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    align-items: center;
+    gap: 20px;
+
+    padding: 14px 0;
+
+    border-bottom: 1px solid #eee;
+
+    font-size: 15px;
+}
+
+.admin-booking-note {
+    font-weight: 700;
+}
+
+.admin-booking-dates {
+    color: #666;
+    font-size: 14px;
+}

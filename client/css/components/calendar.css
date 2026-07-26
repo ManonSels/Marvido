@@ -1,0 +1,98 @@
+.calendar {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.calendar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 20px;
+}
+
+.calendar-header h3 {
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.calendar-nav {
+    background: none;
+    border: 1px solid #ddd;
+
+    width: 34px;
+    height: 34px;
+
+    cursor: pointer;
+
+    font-size: 14px;
+
+    transition: background 0.2s ease;
+}
+
+.calendar-nav:hover {
+    background: #f5f5f5;
+}
+
+.calendar-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+
+    margin-bottom: 8px;
+}
+
+.calendar-weekdays span {
+    text-align: center;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    color: #999;
+
+    text-transform: uppercase;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+}
+
+.calendar-day {
+    aspect-ratio: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 14px;
+
+    border: 1px solid #eee;
+}
+
+.calendar-day.empty {
+    border: none;
+}
+
+.calendar-day.booked {
+    background: #111;
+    color: white;
+}
+
+.calendar-day.editable {
+    cursor: pointer;
+}
+
+.calendar-day.editable:hover {
+    background: #f5f5f5;
+}
+
+.calendar-day.booked.editable:hover {
+    background: #333;
+}
+
+
+/* Selection state for admin (start/end picking) */
+.calendar-day.selecting {
+    background: #ddd;
+}

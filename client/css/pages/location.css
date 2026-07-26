@@ -113,6 +113,11 @@
 
 @media (max-width: 900px) {
 
+    .location {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
     .location-grid {
         grid-template-columns: 1fr;
         gap: 40px;

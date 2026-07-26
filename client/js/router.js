@@ -1,8 +1,9 @@
 import { Home } from "./pages/home.js";
 import { Gallery, initGallery } from "./pages/gallery.js";
-import { Availability } from "./pages/availability.js";
+import { Availability, initAvailability } from "./pages/availability.js";
 import { Location } from "./pages/location.js";
 import { Contact } from "./pages/contact.js";
+import { Admin, initAdmin } from "./pages/admin.js";
 
 
 const routes = {
@@ -10,7 +11,8 @@ const routes = {
     "/gallery": Gallery,
     "/availability": Availability,
     "/location": Location,
-    "/contact": Contact
+    "/contact": Contact,
+    "/admin": Admin
 };
 
 
@@ -22,9 +24,9 @@ export function Router() {
 
     document.querySelector("#app").innerHTML = page();
 
-    if (path === "/gallery") {
-        initGallery();
-    }
+    if (path === "/gallery") initGallery();
+    if (path === "/availability") initAvailability();
+    if (path === "/admin") initAdmin();
 
 }
 

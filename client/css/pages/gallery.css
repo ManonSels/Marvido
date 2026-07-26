@@ -144,6 +144,11 @@
 
 @media (max-width: 768px) {
 
+    .gallery {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
     .gallery-grid {
         column-count: 2;
         column-gap: 12px;

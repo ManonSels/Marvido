@@ -30,7 +30,7 @@ export function Location() {
                     </ul>
 
                     <a
-                        href="https://www.google.com/maps/dir/?api=1&destination=Calle+Example+12,+Benidorm,+Spain"
+                        href="https://maps.app.goo.gl/crS2QcAMJs5NQnKH9"
                         target="_blank"
                         rel="noopener noreferrer"
                         class="location-directions"

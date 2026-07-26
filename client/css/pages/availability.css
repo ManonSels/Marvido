@@ -1,1 +1,37 @@
-/* Availability page styles (placeholder) */
+.availability-intro {
+    max-width: 600px;
+
+    margin-bottom: 50px;
+}
+
+.availability-intro h1 {
+    font-size: 36px;
+    font-weight: 800;
+
+    line-height: 1.2;
+
+    margin: 12px 0 16px;
+}
+
+.availability-intro p {
+    font-size: 17px;
+    line-height: 1.6;
+
+    color: #444;
+}
+
+
+/* Mobile */
+
+@media (max-width: 900px) {
+
+    .availability {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .availability-intro h1 {
+        font-size: 28px;
+    }
+
+}
