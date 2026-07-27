@@ -1,5 +1,22 @@
 import { renderCalendar } from "../components/calendar.js";
 
+const STATUS_OPTIONS = [
+    { value: "paid", label: "Paid" },
+    { value: "deposit", label: "Deposit" },
+    { value: "blocked", label: "Blocked" },
+    { value: "not_available", label: "Not available" }
+];
+
+function statusDropdown(selectedValue, className) {
+    return `
+        <select class="${className}" id="${className}">
+            ${STATUS_OPTIONS.map(opt => `
+                <option value="${opt.value}" ${opt.value === selectedValue ? "selected" : ""}>${opt.label}</option>
+            `).join("")}
+        </select>
+    `;
+}
+
 export function Admin() {
     return `
         <section class="admin container section">
@@ -58,8 +75,8 @@ function renderLogin(root) {
 
 let selectedStart = null;
 let bookingsCache = [];
+let editingId = null;
 
-// Track which month/year the admin is currently viewing so it doesn't reset
 let viewYear;
 let viewMonth;
 
@@ -72,12 +89,24 @@ async function renderDashboard(root) {
             </div>
 
             <p class="admin-instructions">
-                Type a name/note below, then click a start date and an end date to mark that range as booked.
+                Type a name/note and pick a status, then click a start date and an end date to mark that range.
             </p>
 
-            <input type="text" id="admin-note-input" class="admin-note-input" placeholder="Guest name or note (optional)">
+            <div class="admin-new-form">
+                <input type="text" id="admin-note-input" class="admin-note-input" placeholder="Guest name or note (optional)">
+                ${statusDropdown("paid", "admin-status-input")}
+            </div>
+
+            <p class="admin-form-error" id="admin-form-error"></p>
 
             <div id="admin-calendar" class="calendar"></div>
+
+            <div class="admin-legend">
+                <span class="legend-item"><span class="legend-dot status-paid"></span> Paid</span>
+                <span class="legend-item"><span class="legend-dot status-deposit"></span> Deposit</span>
+                <span class="legend-item"><span class="legend-dot status-blocked"></span> Blocked</span>
+                <span class="legend-item"><span class="legend-dot status-not_available"></span> Not available</span>
+            </div>
 
             <h2 class="admin-list-title">Current bookings</h2>
             <div id="admin-bookings-list"></div>
@@ -102,6 +131,7 @@ async function loadBookingsAndRender() {
 
     renderCalendar("admin-calendar", viewYear, viewMonth, bookingsCache, {
         editable: true,
+        showStatus: true,
         onDayClick: handleDayClick,
         onMonthChange: (year, month) => {
             viewYear = year;
@@ -112,7 +142,14 @@ async function loadBookingsAndRender() {
     renderBookingsList();
 }
 
+function showFormError(message) {
+    const el = document.getElementById("admin-form-error");
+    if (el) el.textContent = message || "";
+}
+
 function handleDayClick(dateStr) {
+    showFormError("");
+
     if (!selectedStart) {
         selectedStart = dateStr;
         highlightSelection(dateStr, dateStr);
@@ -123,9 +160,12 @@ function handleDayClick(dateStr) {
     const end = selectedStart < dateStr ? dateStr : selectedStart;
 
     const noteInput = document.getElementById("admin-note-input");
-    const note = noteInput ? noteInput.value.trim() : "";
+    const statusInput = document.getElementById("admin-status-input");
 
-    addBooking(start, end, note);
+    const note = noteInput ? noteInput.value.trim() : "";
+    const status = statusInput ? statusInput.value : "paid";
+
+    addBooking(start, end, note, status);
     selectedStart = null;
 }
 
@@ -138,17 +178,61 @@ function highlightSelection(start, end) {
     });
 }
 
-async function addBooking(start_date, end_date, note) {
-    await fetch("/api/admin/bookings", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ start_date, end_date, note })
-    });
+async function addBooking(start_date, end_date, note, status) {
+    try {
+        const res = await fetch("/api/admin/bookings", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ start_date, end_date, note, status })
+        });
 
-    const noteInput = document.getElementById("admin-note-input");
-    if (noteInput) noteInput.value = "";
+        const data = await res.json();
 
-    await loadBookingsAndRender();
+        if (!res.ok) {
+            showFormError(data.error || "Something went wrong.");
+            return;
+        }
+
+        const noteInput = document.getElementById("admin-note-input");
+        if (noteInput) noteInput.value = "";
+
+        await loadBookingsAndRender();
+
+    } catch (err) {
+        console.error("addBooking failed:", err);
+        showFormError("Something went wrong. Check the console.");
+    }
+}
+
+async function updateBooking(id, start_date, end_date, note, status) {
+    try {
+        const res = await fetch(`/api/admin/bookings/${id}`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ start_date, end_date, note, status })
+        });
+
+        let data = {};
+        try {
+            data = await res.json();
+        } catch (parseErr) {
+            console.error("Response was not valid JSON:", parseErr);
+            alert("Server error while saving. Check the console/server log for details.");
+            return;
+        }
+
+        if (!res.ok) {
+            alert(data.error || "Something went wrong.");
+            return;
+        }
+
+        editingId = null;
+        await loadBookingsAndRender();
+
+    } catch (err) {
+        console.error("updateBooking failed:", err);
+        alert("Network or server error while saving. Check the console.");
+    }
 }
 
 async function deleteBooking(id) {
@@ -164,15 +248,78 @@ function renderBookingsList() {
         return;
     }
 
-    listEl.innerHTML = bookingsCache.map(b => `
-        <div class="admin-booking-row">
-            <span class="admin-booking-note">${b.note ? b.note : "—"}</span>
-            <span class="admin-booking-dates">${b.start_date} &rarr; ${b.end_date}</span>
-            <button data-id="${b.id}" class="admin-delete-btn">Remove</button>
-        </div>
-    `).join("");
+    listEl.innerHTML = bookingsCache.map(b => {
+        if (editingId === b.id) {
+            return `
+                <div class="admin-booking-row admin-booking-editing">
+                    <input type="text" class="edit-note" value="${b.note || ""}" placeholder="Note">
+                    <input type="date" class="edit-start" value="${b.start_date}">
+                    <input type="date" class="edit-end" value="${b.end_date}">
+                    ${statusDropdown(b.status || "paid", "edit-status")}
+                    <button class="admin-save-btn" data-id="${b.id}">Save</button>
+                    <button class="admin-cancel-btn">Cancel</button>
+                </div>
+            `;
+        }
+
+        return `
+            <div class="admin-booking-row status-${b.status || "paid"}">
+                <span class="admin-booking-note">${b.note ? b.note : "—"}</span>
+                <span class="admin-booking-dates">${b.start_date} &rarr; ${b.end_date}</span>
+                <span class="admin-booking-status-tag status-tag-${b.status || "paid"}">
+                    ${STATUS_OPTIONS.find(o => o.value === b.status)?.label || "Paid"}
+                </span>
+                <button data-id="${b.id}" class="admin-edit-btn">Edit</button>
+                <button data-id="${b.id}" class="admin-delete-btn">Remove</button>
+            </div>
+        `;
+    }).join("");
 
     listEl.querySelectorAll(".admin-delete-btn").forEach(btn => {
         btn.addEventListener("click", () => deleteBooking(btn.dataset.id));
+    });
+
+    listEl.querySelectorAll(".admin-edit-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+            editingId = parseInt(btn.dataset.id);
+            renderBookingsList();
+        });
+    });
+
+    listEl.querySelectorAll(".admin-cancel-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+            editingId = null;
+            renderBookingsList();
+        });
+    });
+
+    listEl.querySelectorAll(".admin-save-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+            const row = btn.closest(".admin-booking-row");
+
+            if (!row) return;
+
+            const noteEl = row.querySelector(".edit-note");
+            const startEl = row.querySelector(".edit-start");
+            const endEl = row.querySelector(".edit-end");
+            const statusEl = row.querySelector(".edit-status");
+
+            if (!noteEl || !startEl || !endEl || !statusEl) {
+                console.error("Could not find edit inputs in row");
+                return;
+            }
+
+            const note = noteEl.value.trim();
+            const start_date = startEl.value;
+            const end_date = endEl.value;
+            const status = statusEl.value;
+
+            if (!start_date || !end_date) {
+                alert("Both start and end dates are required.");
+                return;
+            }
+
+            updateBooking(btn.dataset.id, start_date, end_date, note, status);
+        });
     });
 }

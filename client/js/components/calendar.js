@@ -1,13 +1,16 @@
 function formatDate(date) {
-    return date.toISOString().split("T")[0];
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
 }
 
-function isDateBooked(dateStr, bookings) {
-    return bookings.some(b => dateStr >= b.start_date && dateStr <= b.end_date);
+function findBookingForDate(dateStr, bookings) {
+    return bookings.find(b => dateStr >= b.start_date && dateStr <= b.end_date);
 }
 
 export function renderCalendar(containerId, year, month, bookings, options = {}) {
-    const { editable = false, onDayClick = null, onMonthChange = null } = options;
+    const { editable = false, onDayClick = null, onMonthChange = null, showStatus = false } = options;
 
     const container = document.getElementById(containerId);
 
@@ -30,7 +33,6 @@ export function renderCalendar(containerId, year, month, bookings, options = {})
         <div class="calendar-grid">
     `;
 
-    // Empty cells before the 1st
     for (let i = 0; i < startWeekday; i++) {
         html += `<div class="calendar-day empty"></div>`;
     }
@@ -38,11 +40,12 @@ export function renderCalendar(containerId, year, month, bookings, options = {})
     for (let day = 1; day <= daysInMonth; day++) {
         const date = new Date(year, month, day);
         const dateStr = formatDate(date);
-        const booked = isDateBooked(dateStr, bookings);
+        const booking = findBookingForDate(dateStr, bookings);
 
         const classes = ["calendar-day"];
-        if (booked) classes.push("booked");
+        if (booking) classes.push("booked");
         if (editable) classes.push("editable");
+        if (showStatus && booking) classes.push(`status-${booking.status || "booked"}`);
 
         html += `<div class="${classes.join(" ")}" data-date="${dateStr}">${day}</div>`;
     }
