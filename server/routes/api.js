@@ -7,6 +7,11 @@ router.get("/availability", (req, res) => {
     res.json(bookings);
 });
 
+router.get("/prices", (req, res) => {
+    const prices = db.prepare("SELECT start_date, end_date, price_per_night FROM prices").all();
+    res.json(prices);
+});
+
 router.get("/test", (req, res) => {
     res.json({ message: "Server works!" });
 });

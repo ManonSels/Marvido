@@ -10,14 +10,20 @@ function findBookingForDate(dateStr, bookings) {
 }
 
 export function renderCalendar(containerId, year, month, bookings, options = {}) {
-    const { editable = false, onDayClick = null, onMonthChange = null, showStatus = false } = options;
+    const {
+        editable = false,
+        onDayClick = null,
+        onMonthChange = null,
+        showStatus = false,
+        dayContent = null // optional: (dateStr) => string, rendered below the day number
+    } = options;
 
     const container = document.getElementById(containerId);
 
     const firstDay = new Date(year, month, 1);
     const lastDay = new Date(year, month + 1, 0);
     const daysInMonth = lastDay.getDate();
-    const startWeekday = firstDay.getDay(); // 0 = Sunday
+    const startWeekday = firstDay.getDay();
 
     const monthName = firstDay.toLocaleString("default", { month: "long" });
 
@@ -47,7 +53,14 @@ export function renderCalendar(containerId, year, month, bookings, options = {})
         if (editable) classes.push("editable");
         if (showStatus && booking) classes.push(`status-${booking.status || "booked"}`);
 
-        html += `<div class="${classes.join(" ")}" data-date="${dateStr}">${day}</div>`;
+        const extra = dayContent ? dayContent(dateStr) : "";
+
+        html += `
+            <div class="${classes.join(" ")}" data-date="${dateStr}">
+                <span class="calendar-day-number">${day}</span>
+                ${extra ? `<span class="calendar-day-extra">${extra}</span>` : ""}
+            </div>
+        `;
     }
 
     html += `</div>`;

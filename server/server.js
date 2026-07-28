@@ -15,10 +15,12 @@ app.use(express.static(path.join(__dirname, "../client")));
 const authRoutes = require("./routes/authRoutes");
 const { requireAdmin } = require("./middleware/auth");
 const adminRoutes = require("./routes/admin");
+const adminPricesRoutes = require("./routes/adminPrices");
 const apiRoutes = require("./routes/api");
 
 app.use("/api/auth", authRoutes);
 app.use("/api/admin", requireAdmin, adminRoutes);
+app.use("/api/admin", requireAdmin, adminPricesRoutes);
 app.use("/api", apiRoutes);
 
 app.get("/{*splat}", (req, res) => {

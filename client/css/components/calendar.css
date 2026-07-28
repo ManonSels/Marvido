@@ -62,12 +62,28 @@
     aspect-ratio: 1;
 
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 
     font-size: 14px;
 
     border: 1px solid #eee;
+
+    padding: 2px;
+}
+
+.calendar-day-number {
+    line-height: 1.1;
+}
+
+.calendar-day-extra {
+    font-size: 10px;
+    font-weight: 600;
+
+    opacity: 0.8;
+
+    margin-top: 2px;
 }
 
 .calendar-day.empty {
@@ -91,8 +107,36 @@
     background: #333;
 }
 
-
-/* Selection state for admin (start/end picking) */
 .calendar-day.selecting {
     background: #ddd;
+}
+
+
+/* Status colors - calendar days (admin only) */
+
+.calendar-day.status-paid {
+    background: #2e7d32;
+    color: white;
+}
+
+.calendar-day.status-deposit {
+    background: #f2c94c;
+    color: #222;
+}
+
+.calendar-day.status-blocked {
+    background: #9e9e9e;
+    color: white;
+}
+
+.calendar-day.status-not_available {
+    background: #c0392b;
+    color: white;
+}
+
+.calendar-day.editable.status-paid:hover,
+.calendar-day.editable.status-deposit:hover,
+.calendar-day.editable.status-blocked:hover,
+.calendar-day.editable.status-not_available:hover {
+    opacity: 0.85;
 }

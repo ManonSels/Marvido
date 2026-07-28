@@ -7,7 +7,7 @@ export function Availability() {
             <div class="availability-intro">
                 <span class="about-eyebrow">Availability</span>
                 <h1>Check the calendar</h1>
-                <p>Dates shown in black are already booked.</p>
+                <p>Dates shown in black are already booked. Price per night is shown below each day.</p>
             </div>
 
             <div id="availability-calendar" class="calendar"></div>
@@ -18,10 +18,16 @@ export function Availability() {
 
 let currentYear;
 let currentMonth;
+let pricesCache = [];
 
 export async function initAvailability() {
-    const res = await fetch("/api/availability");
-    const bookings = await res.json();
+    const [bookingsRes, pricesRes] = await Promise.all([
+        fetch("/api/availability"),
+        fetch("/api/prices")
+    ]);
+
+    const bookings = await bookingsRes.json();
+    pricesCache = await pricesRes.json();
 
     const today = new Date();
     currentYear = today.getFullYear();
@@ -32,6 +38,10 @@ export async function initAvailability() {
         onMonthChange: (year, month) => {
             currentYear = year;
             currentMonth = month;
+        },
+        dayContent: (dateStr) => {
+            const match = pricesCache.find(p => dateStr >= p.start_date && dateStr <= p.end_date);
+            return match ? `€${match.price_per_night}` : "";
         }
     });
 }
