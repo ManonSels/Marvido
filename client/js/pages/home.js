@@ -8,12 +8,10 @@ export function Home() {
 
             <div class="about-intro">
                 <span class="about-eyebrow">The Apartment</span>
-                <h2>A quiet retreat on the Costa Blanca</h2>
-                <p>
-                    Marvido is a sun-filled apartment designed for slow mornings
-                    and long evenings. Every room opens toward the coast, with
-                    calm, uncluttered interiors that let the view do the talking.
-                </p>
+                <h2>Feel at home in Javea</h2>
+                <p>Marvido is a sun-filled apartment designed for slow mornings and long evenings. 
+                Both the living room and bedroom open towards the coast, while the calm, 
+                uncluttered interiors let the view do the talking.</p>
             </div>
 
             <div class="about-grid">
@@ -29,13 +27,13 @@ export function Home() {
                 <div class="about-feature">
                     <span class="about-feature-number">01</span>
                     <h3>Space</h3>
-                    <p>Two bedrooms, a full kitchen, and a private terrace facing the sea.</p>
+                    <p>One bedroom, a fully equipped open-plan kitchen, and a sea-facing terrace.</p>
                 </div>
 
                 <div class="about-feature">
                     <span class="about-feature-number">02</span>
                     <h3>Location</h3>
-                    <p>Five minutes from the beach, walking distance to the old town.</p>
+                    <p>Situated by the sea, in the centre of the harbour, with the Old Town just a few minutes away.</p>
                 </div>
 
                 <div class="about-image about-image-small">
@@ -45,7 +43,7 @@ export function Home() {
                 <div class="about-feature">
                     <span class="about-feature-number">03</span>
                     <h3>Comfort</h3>
-                    <p>Air conditioning, high-speed WiFi, and everything you need to feel at home.</p>
+                    <p>Air conditioning, fibre WiFi, beach chairs and parasols, a comfortable shower room, Smart TV, dishwasher, and all the essentials.</p>
                 </div>
 
             </div>

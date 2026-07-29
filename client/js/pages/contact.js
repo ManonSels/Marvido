@@ -1,21 +1,21 @@
 const contactMethods = [
     {
         label: "Email",
-        value: "info@marvido.com",
-        href: "mailto:info@marvido.com",
-        note: "We usually reply within a day."
+        value: "bookmarvido@gmail.com",
+        href: "mailto:bookmarvido@gmail.com",
+        note: "We usually reply within 24 hours."
     },
     {
         label: "WhatsApp",
-        value: "+34 600 123 456",
-        href: "https://wa.me/34600123456",
+        value: "+34 695 098 636",
+        href: "https://wa.me/695098636",
         note: "Fastest way to reach us."
     },
     {
-        label: "Phone",
-        value: "+34 600 123 456",
-        href: "tel:+34600123456",
-        note: "Available 9am - 8pm CET."
+        label: "Telegram",
+        value: "+34 695 098 636",
+        href: "tel:+34695098636",
+        note: "Alternative way to reach us."
     }
 ];
 
@@ -25,10 +25,10 @@ export function Contact() {
 
             <div class="contact-intro">
                 <span class="about-eyebrow">Contact</span>
-                <h1>Let's get in touch</h1>
+                <h1>Get in touch</h1>
                 <p>
                     Questions about the apartment, your stay, or availability?
-                    Reach out however suits you best — we're happy to help.
+                    Reach out to us, we're happy to help.
                 </p>
             </div>
 

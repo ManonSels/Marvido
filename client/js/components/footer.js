@@ -19,8 +19,7 @@ export function Footer() {
 
                 <div class="footer-socials">
                     <a href="mailto:info@marvido.com" aria-label="Email">✉</a>
-                    <a href="#" aria-label="Instagram">◎</a>
-                    <a href="#" aria-label="Facebook">f</a>
+                    <a href="#" aria-label="Booking">B</a>
                 </div>
 
             </div>

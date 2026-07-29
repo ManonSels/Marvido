@@ -8,10 +8,7 @@ export function Location() {
                     <span class="about-eyebrow">Location</span>
                     <h1>Find your way to Marvido</h1>
                     <p>
-                        Marvido sits just minutes from the beach, with the
-                        old town, restaurants, and shops all within easy
-                        walking distance. Quiet, well connected, and close
-                        to everything worth seeing on the Costa Blanca.
+                        Marvido sits right in front of the beach, with the old town, restaurants, and shops all within easy walking distance. Perfectly located, it offers easy access to everything worth discovering.
                     </p>
 
                     <ul class="location-details">
@@ -25,7 +22,7 @@ export function Location() {
                         </li>
                         <li>
                             <strong>Airport</strong>
-                            <span>Alicante (ALC), 1 hour drive</span>
+                            <span>Alicante (ALC), 1 hour drive | Valencia (VLC), 1.5 hours drive</span>
                         </li>
                     </ul>
 

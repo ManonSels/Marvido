@@ -12,7 +12,7 @@ export function Hero() {
 
                 <div class="hero-text">
                     <h1>Marvido</h1>
-                    <p>Your getaway in Costa Blanca</p>
+                    <p>Start your morning with sea blue</p>
                 </div>
 
                 <div class="hero-bar"></div>
