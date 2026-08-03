@@ -3,8 +3,11 @@ A personalized booking website for our apartment, built as an alternative to Boo
  
 ## Info
 **Frontend:** HTML, CSS, JavaScript
+
 **Backend:** Node.js, Express.js
+
 **Database:** SQLite
+
 **Deployment:** nginx
 
 ### Installation
