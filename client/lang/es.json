@@ -1,0 +1,63 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "gallery": "Galería",
+    "availability": "Disponibilidad",
+    "location": "Ubicación",
+    "contact": "Contacto"
+  },
+  "langLabels": {
+    "en": "English (EN)",
+    "es": "Español (ES)",
+    "nl": "Nederlands (NL)"
+  },
+  "hero": {
+    "title": "Marvido",
+    "subtitle": "Empieza tu mañana con el azul del mar",
+    "ctaAvailability": "Ver disponibilidad",
+    "ctaContact": "Contáctanos",
+    "scroll": "↓ Desliza hacia abajo"
+  },
+  "home": {
+    "aboutEyebrow": "El apartamento",
+    "aboutTitle": "Siéntete como en casa en Jávea",
+    "aboutIntro": "Marvido es un apartamento luminoso pensado para mañanas tranquilas y noches largas. Tanto el salón como el dormitorio se abren hacia la costa, mientras que los interiores serenos y sin recargar dejan que las vistas hablen por sí solas.",
+    "feature1Title": "Espacio",
+    "feature1Text": "Un dormitorio, una cocina abierta totalmente equipada y una terraza frente al mar.",
+    "feature2Title": "Ubicación",
+    "feature2Text": "Situado junto al mar, en el centro del puerto, con el casco antiguo a solo unos minutos.",
+    "feature3Title": "Comodidad",
+    "feature3Text": "Aire acondicionado, WiFi de fibra, sombrillas y hamacas de playa, un baño cómodo, Smart TV, lavavajillas y todo lo esencial."
+  },
+  "gallery": {
+    "eyebrow": "La galería",
+    "title": "Una mirada más de cerca"
+  },
+  "availability": {
+    "eyebrow": "Disponibilidad",
+    "title": "Consulta el calendario",
+    "intro": "Las fechas en negro ya están reservadas. El precio por noche se muestra debajo de cada día disponible."
+  },
+  "location": {
+    "eyebrow": "Ubicación",
+    "title": "Cómo llegar a Marvido",
+    "intro": "Marvido está justo frente a la playa, con el casco antiguo, restaurantes y tiendas a poca distancia a pie. Perfectamente ubicado, ofrece fácil acceso a todo lo que merece la pena descubrir.",
+    "addressLabel": "Dirección",
+    "addressValue": "Calle Pío X 1, Jávea, España",
+    "beachLabel": "Playa más cercana",
+    "beachValue": "5 minutos a pie",
+    "airportLabel": "Aeropuerto",
+    "airportValue": "Alicante (ALC), 1 hora en coche | Valencia (VLC), 1,5 horas en coche",
+    "directions": "Cómo llegar →"
+  },
+  "contact": {
+    "eyebrow": "Contacto",
+    "title": "Ponte en contacto",
+    "intro": "¿Tienes preguntas sobre el apartamento, tu estancia o la disponibilidad? Escríbenos, estaremos encantados de ayudarte.",
+    "methods": {
+      "email": { "label": "Correo electrónico", "note": "Solemos responder en 24 horas." },
+      "whatsapp": { "label": "WhatsApp", "note": "La forma más rápida de contactarnos." },
+      "telegram": { "label": "Telegram", "note": "Otra forma de contactarnos." }
+    }
+  }
+}

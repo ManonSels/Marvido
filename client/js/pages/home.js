@@ -1,4 +1,5 @@
 import { Hero } from "../components/hero.js";
+import { t } from "../utils/i18n.js";
 
 export function Home() {
     return `
@@ -7,11 +8,9 @@ export function Home() {
         <section class="about container section">
 
             <div class="about-intro">
-                <span class="about-eyebrow">The Apartment</span>
-                <h2>Feel at home in Javea</h2>
-                <p>Marvido is a sun-filled apartment designed for slow mornings and long evenings. 
-                Both the living room and bedroom open towards the coast, while the calm, 
-                uncluttered interiors let the view do the talking.</p>
+                <span class="about-eyebrow">${t("home.aboutEyebrow")}</span>
+                <h2>${t("home.aboutTitle")}</h2>
+                <p>${t("home.aboutIntro")}</p>
             </div>
 
             <div class="about-grid">
@@ -26,14 +25,14 @@ export function Home() {
 
                 <div class="about-feature">
                     <span class="about-feature-number">01</span>
-                    <h3>Space</h3>
-                    <p>One bedroom, a fully equipped open-plan kitchen, and a sea-facing terrace.</p>
+                    <h3>${t("home.feature1Title")}</h3>
+                    <p>${t("home.feature1Text")}</p>
                 </div>
 
                 <div class="about-feature">
                     <span class="about-feature-number">02</span>
-                    <h3>Location</h3>
-                    <p>Situated by the sea, in the centre of the harbour, with the Old Town just a few minutes away.</p>
+                    <h3>${t("home.feature2Title")}</h3>
+                    <p>${t("home.feature2Text")}</p>
                 </div>
 
                 <div class="about-image about-image-small">
@@ -42,8 +41,8 @@ export function Home() {
 
                 <div class="about-feature">
                     <span class="about-feature-number">03</span>
-                    <h3>Comfort</h3>
-                    <p>Air conditioning, fibre WiFi, beach chairs and parasols, a comfortable shower room, Smart TV, dishwasher, and all the essentials.</p>
+                    <h3>${t("home.feature3Title")}</h3>
+                    <p>${t("home.feature3Text")}</p>
                 </div>
 
             </div>

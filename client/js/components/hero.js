@@ -1,3 +1,5 @@
+import { t } from "../utils/i18n.js";
+
 export function Hero() {
     return `
         <section class="hero">
@@ -11,20 +13,20 @@ export function Hero() {
             <div class="hero-content">
 
                 <div class="hero-text">
-                    <h1>Marvido</h1>
-                    <p>Start your morning with sea blue</p>
+                    <h1>${t("hero.title")}</h1>
+                    <p>${t("hero.subtitle")}</p>
                 </div>
 
                 <div class="hero-bar"></div>
 
                 <div class="hero-buttons">
-                    <a href="/availability" class="btn btn-primary" data-link>Check Availability</a>
-                    <a href="/contact" class="btn btn-secondary" data-link>Contact Us</a>
+                    <a href="/availability" class="btn btn-primary" data-link>${t("hero.ctaAvailability")}</a>
+                    <a href="/contact" class="btn btn-secondary" data-link>${t("hero.ctaContact")}</a>
                 </div>
 
             </div>
 
-            <div class="hero-scroll">↓ Scroll Down</div>
+            <div class="hero-scroll">${t("hero.scroll")}</div>
 
         </section>
     `;

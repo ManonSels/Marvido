@@ -1,0 +1,63 @@
+{
+  "nav": {
+    "home": "Home",
+    "gallery": "Galerij",
+    "availability": "Beschikbaarheid",
+    "location": "Locatie",
+    "contact": "Contact"
+  },
+  "langLabels": {
+    "en": "English (EN)",
+    "es": "Español (ES)",
+    "nl": "Nederlands (NL)"
+  },
+  "hero": {
+    "title": "Marvido",
+    "subtitle": "Begin je ochtend met zeeblauw",
+    "ctaAvailability": "Bekijk beschikbaarheid",
+    "ctaContact": "Neem contact op",
+    "scroll": "↓ Scroll naar beneden"
+  },
+  "home": {
+    "aboutEyebrow": "Het appartement",
+    "aboutTitle": "Voel je thuis in Jávea",
+    "aboutIntro": "Marvido is een zonovergoten appartement, ontworpen voor rustige ochtenden en lange avonden. Zowel de woonkamer als de slaapkamer kijken uit op de kust, terwijl het rustige, opgeruimde interieur het uitzicht laat spreken.",
+    "feature1Title": "Ruimte",
+    "feature1Text": "Eén slaapkamer, een volledig uitgeruste open keuken en een terras aan zee.",
+    "feature2Title": "Locatie",
+    "feature2Text": "Gelegen aan zee, in het centrum van de haven, met de oude stad op slechts enkele minuten afstand.",
+    "feature3Title": "Comfort",
+    "feature3Text": "Airconditioning, glasvezel wifi, strandstoelen en parasols, een comfortabele badkamer, Smart TV, vaatwasser en alle essentiële voorzieningen."
+  },
+  "gallery": {
+    "eyebrow": "De galerij",
+    "title": "Een nadere blik"
+  },
+  "availability": {
+    "eyebrow": "Beschikbaarheid",
+    "title": "Bekijk de kalender",
+    "intro": "Data in het zwart zijn al geboekt. De prijs per nacht staat onder elke beschikbare dag."
+  },
+  "location": {
+    "eyebrow": "Locatie",
+    "title": "Zo vind je Marvido",
+    "intro": "Marvido ligt direct aan het strand, met de oude stad, restaurants en winkels op loopafstand. Perfect gelegen, met gemakkelijke toegang tot alles wat de moeite waard is.",
+    "addressLabel": "Adres",
+    "addressValue": "Calle Pío X 1, Jávea, Spanje",
+    "beachLabel": "Dichtstbijzijnde strand",
+    "beachValue": "5 minuten lopen",
+    "airportLabel": "Luchthaven",
+    "airportValue": "Alicante (ALC), 1 uur rijden | Valencia (VLC), 1,5 uur rijden",
+    "directions": "Routebeschrijving →"
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Neem contact op",
+    "intro": "Vragen over het appartement, je verblijf of de beschikbaarheid? Neem gerust contact met ons op, we helpen je graag.",
+    "methods": {
+      "email": { "label": "E-mail", "note": "We reageren meestal binnen 24 uur." },
+      "whatsapp": { "label": "WhatsApp", "note": "De snelste manier om ons te bereiken." },
+      "telegram": { "label": "Telegram", "note": "Een alternatieve manier om ons te bereiken." }
+    }
+  }
+}

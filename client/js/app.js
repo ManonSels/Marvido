@@ -1,20 +1,26 @@
 import { Navbar } from "./components/navbar.js";
 import { Footer } from "./components/footer.js";
 import { Router, navigateTo } from "./router.js";
-
-let currentLang = "en";
+import { loadLanguage, getCurrentLang } from "./utils/i18n.js";
 
 function renderNavbar() {
-    document.querySelector("#navbar").innerHTML = Navbar(currentLang);
+    document.querySelector("#navbar").innerHTML = Navbar();
 }
 
-renderNavbar();
-document.querySelector("#footer").innerHTML = Footer();
+async function init() {
+    // Load saved/default language BEFORE first render so text is correct from the start
+    await loadLanguage(getCurrentLang());
 
-Router();
+    renderNavbar();
+    document.querySelector("#footer").innerHTML = Footer();
+
+    Router();
+}
+
+init();
 
 
-document.addEventListener("click", e => {
+document.addEventListener("click", async e => {
 
     // SPA navigation
     const link = e.target.closest("[data-link]");
@@ -51,9 +57,10 @@ document.addEventListener("click", e => {
     const langOption = e.target.closest("[data-lang]");
 
     if (langOption) {
-        currentLang = langOption.dataset.lang;
+        await loadLanguage(langOption.dataset.lang);
         renderNavbar();
-        // later: swap JSON translations here based on currentLang
+        document.querySelector("#footer").innerHTML = Footer();
+        Router(); // re-render current page in the new language
     }
 
 });

@@ -1,3 +1,5 @@
+import { t } from "../utils/i18n.js";
+
 const images = [
     { src: "/assets/images/1.png", caption: "Food&Drinks" },
     { src: "/assets/images/23.JPG", caption: "Bedroom" },
@@ -29,8 +31,8 @@ export function Gallery() {
         <section class="gallery container section">
 
             <div class="gallery-intro">
-                <span class="about-eyebrow">The Gallery</span>
-                <h1>A closer look</h1>
+                <span class="about-eyebrow">${t("gallery.eyebrow")}</span>
+                <h1>${t("gallery.title")}</h1>
             </div>
 
             <div class="gallery-grid">

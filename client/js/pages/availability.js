@@ -1,13 +1,14 @@
 import { renderCalendar } from "../components/calendar.js";
+import { t } from "../utils/i18n.js";
 
 export function Availability() {
     return `
         <section class="availability container section">
 
             <div class="availability-intro">
-                <span class="about-eyebrow">Availability</span>
-                <h1>Check the calendar</h1>
-                <p>Dates shown in black are already booked. Price per night is shown below each available day.</p>
+                <span class="about-eyebrow">${t("availability.eyebrow")}</span>
+                <h1>${t("availability.title")}</h1>
+                <p>${t("availability.intro")}</p>
             </div>
 
             <div id="availability-calendar" class="calendar"></div>

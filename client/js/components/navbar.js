@@ -1,16 +1,9 @@
-export function Navbar(currentLang = "en") {
-    const languages = {
-        en: "EN",
-        es: "ES",
-        nl: "NL"
-    };
+import { t, getCurrentLang } from "../utils/i18n.js";
 
-    const labels = {
-        en: "English (EN)",
-        es: "Español (ES)",
-        nl: "Nederlands (NL)"
-    };
+export function Navbar() {
+    const currentLang = getCurrentLang();
 
+    const languages = { en: "EN", es: "ES", nl: "NL" };
     const otherLangs = Object.keys(languages).filter(l => l !== currentLang);
 
     return `
@@ -22,11 +15,11 @@ export function Navbar(currentLang = "en") {
                 </a>
 
                 <ul class="nav-links">
-                    <li><a href="/" data-link>Home</a></li>
-                    <li><a href="/gallery" data-link>Gallery</a></li>
-                    <li><a href="/availability" data-link>Availability</a></li>
-                    <li><a href="/location" data-link>Location</a></li>
-                    <li><a href="/contact" data-link>Contact</a></li>
+                    <li><a href="/" data-link>${t("nav.home")}</a></li>
+                    <li><a href="/gallery" data-link>${t("nav.gallery")}</a></li>
+                    <li><a href="/availability" data-link>${t("nav.availability")}</a></li>
+                    <li><a href="/location" data-link>${t("nav.location")}</a></li>
+                    <li><a href="/contact" data-link>${t("nav.contact")}</a></li>
                 </ul>
             </div>
 
@@ -34,7 +27,7 @@ export function Navbar(currentLang = "en") {
                 <button class="language-toggle">${languages[currentLang]} ▼</button>
                 <ul class="language-dropdown">
                     ${otherLangs.map(lang => `
-                        <li><button data-lang="${lang}">${labels[lang]}</button></li>
+                        <li><button data-lang="${lang}">${t(`langLabels.${lang}`)}</button></li>
                     `).join("")}
                 </ul>
             </div>

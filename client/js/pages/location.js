@@ -1,3 +1,5 @@
+import { t } from "../utils/i18n.js";
+
 export function Location() {
     return `
         <section class="location container section">
@@ -5,24 +7,22 @@ export function Location() {
             <div class="location-grid">
 
                 <div class="location-text">
-                    <span class="about-eyebrow">Location</span>
-                    <h1>Find your way to Marvido</h1>
-                    <p>
-                        Marvido sits right in front of the beach, with the old town, restaurants, and shops all within easy walking distance. Perfectly located, it offers easy access to everything worth discovering.
-                    </p>
+                    <span class="about-eyebrow">${t("location.eyebrow")}</span>
+                    <h1>${t("location.title")}</h1>
+                    <p>${t("location.intro")}</p>
 
                     <ul class="location-details">
                         <li>
-                            <strong>Address</strong>
-                            <span>Calle PioX 1, Javea, Spain</span>
+                            <strong>${t("location.addressLabel")}</strong>
+                            <span>${t("location.addressValue")}</span>
                         </li>
                         <li>
-                            <strong>Nearest beach</strong>
-                            <span>5 minute walk</span>
+                            <strong>${t("location.beachLabel")}</strong>
+                            <span>${t("location.beachValue")}</span>
                         </li>
                         <li>
-                            <strong>Airport</strong>
-                            <span>Alicante (ALC), 1 hour drive | Valencia (VLC), 1.5 hours drive</span>
+                            <strong>${t("location.airportLabel")}</strong>
+                            <span>${t("location.airportValue")}</span>
                         </li>
                     </ul>
 
@@ -32,8 +32,7 @@ export function Location() {
                         rel="noopener noreferrer"
                         class="location-directions"
                     >
-                    
-                        Get directions →
+                        ${t("location.directions")}
                     </a>
                 </div>
 

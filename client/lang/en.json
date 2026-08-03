@@ -1,0 +1,63 @@
+{
+  "nav": {
+    "home": "Home",
+    "gallery": "Gallery",
+    "availability": "Availability",
+    "location": "Location",
+    "contact": "Contact"
+  },
+  "langLabels": {
+    "en": "English (EN)",
+    "es": "Español (ES)",
+    "nl": "Nederlands (NL)"
+  },
+  "hero": {
+    "title": "Marvido",
+    "subtitle": "Start your morning with sea blue",
+    "ctaAvailability": "Check Availability",
+    "ctaContact": "Contact Us",
+    "scroll": "↓ Scroll Down"
+  },
+  "home": {
+    "aboutEyebrow": "The Apartment",
+    "aboutTitle": "Feel at home in Javea",
+    "aboutIntro": "Marvido is a sun-filled apartment designed for slow mornings and long evenings. Both the living room and bedroom open towards the coast, while the calm, uncluttered interiors let the view do the talking.",
+    "feature1Title": "Space",
+    "feature1Text": "One bedroom, a fully equipped open-plan kitchen, and a sea-facing terrace.",
+    "feature2Title": "Location",
+    "feature2Text": "Situated by the sea, in the centre of the harbour, with the Old Town just a few minutes away.",
+    "feature3Title": "Comfort",
+    "feature3Text": "Air conditioning, fibre WiFi, beach chairs and parasols, a comfortable shower room, Smart TV, dishwasher, and all the essentials."
+  },
+  "gallery": {
+    "eyebrow": "The Gallery",
+    "title": "A closer look"
+  },
+  "availability": {
+    "eyebrow": "Availability",
+    "title": "Check the calendar",
+    "intro": "Dates shown in black are already booked. Price per night is shown below each available day."
+  },
+  "location": {
+    "eyebrow": "Location",
+    "title": "Find your way to Marvido",
+    "intro": "Marvido sits right in front of the beach, with the old town, restaurants, and shops all within easy walking distance. Perfectly located, it offers easy access to everything worth discovering.",
+    "addressLabel": "Address",
+    "addressValue": "Calle PioX 1, Javea, Spain",
+    "beachLabel": "Nearest beach",
+    "beachValue": "5 minute walk",
+    "airportLabel": "Airport",
+    "airportValue": "Alicante (ALC), 1 hour drive | Valencia (VLC), 1.5 hours drive",
+    "directions": "Get directions →"
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Get in touch",
+    "intro": "Questions about the apartment, your stay, or availability? Reach out to us, we're happy to help.",
+    "methods": {
+      "email": { "label": "Email", "note": "We usually reply within 24 hours." },
+      "whatsapp": { "label": "WhatsApp", "note": "Fastest way to reach us." },
+      "telegram": { "label": "Telegram", "note": "Alternative way to reach us." }
+    }
+  }
+}
