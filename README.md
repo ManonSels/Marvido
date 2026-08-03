@@ -2,10 +2,10 @@
 A personalized booking website for our apartment, built as an alternative to Booking.com.
  
 ## Info
--**Frontend:** HTML, CSS, JavaScript
--**Backend:** Node.js, Express.js
--**Database:** SQLite
--**Deployment:** nginx
+**Frontend:** HTML, CSS, JavaScript
+**Backend:** Node.js, Express.js
+**Database:** SQLite
+**Deployment:** nginx
 
 ### Installation
 -Node.js (v18+ recommended)
