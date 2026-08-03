@@ -50,7 +50,22 @@
 
 .contact-card:hover .contact-card-number,
 .contact-card:hover .contact-card-note {
-    color: #999;
+    color: #ccc;
+}
+
+.contact-card:nth-child(1):hover {
+    background: #d93025;
+    border-color: #d93025;
+}
+
+.contact-card:nth-child(2):hover {
+    background: #25d366;
+    border-color: #25d366;
+}
+
+.contact-card:nth-child(3):hover {
+    background: #229ed9;
+    border-color: #229ed9;
 }
 
 .contact-card-number {

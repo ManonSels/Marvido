@@ -7,7 +7,7 @@ export function Availability() {
             <div class="availability-intro">
                 <span class="about-eyebrow">Availability</span>
                 <h1>Check the calendar</h1>
-                <p>Dates shown in black are already booked. Price per night is shown below each day.</p>
+                <p>Dates shown in black are already booked. Price per night is shown below each available day.</p>
             </div>
 
             <div id="availability-calendar" class="calendar"></div>
@@ -18,7 +18,6 @@ export function Availability() {
 
 let currentYear;
 let currentMonth;
-let pricesCache = [];
 
 export async function initAvailability() {
     const [bookingsRes, pricesRes] = await Promise.all([
@@ -27,11 +26,15 @@ export async function initAvailability() {
     ]);
 
     const bookings = await bookingsRes.json();
-    pricesCache = await pricesRes.json();
+    const prices = await pricesRes.json();
 
     const today = new Date();
     currentYear = today.getFullYear();
     currentMonth = today.getMonth();
+
+    function isBooked(dateStr) {
+        return bookings.some(b => dateStr >= b.start_date && dateStr <= b.end_date);
+    }
 
     renderCalendar("availability-calendar", currentYear, currentMonth, bookings, {
         editable: false,
@@ -40,7 +43,9 @@ export async function initAvailability() {
             currentMonth = month;
         },
         dayContent: (dateStr) => {
-            const match = pricesCache.find(p => dateStr >= p.start_date && dateStr <= p.end_date);
+            if (isBooked(dateStr)) return ""; // don't show price on booked days
+
+            const match = prices.find(p => dateStr >= p.start_date && dateStr <= p.end_date);
             return match ? `€${match.price_per_night}` : "";
         }
     });
