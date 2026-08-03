@@ -17,11 +17,11 @@ export function Home() {
             <div class="about-grid">
 
                 <div class="about-image about-image-large">
-                    <img src="/assets/images/living-room.jpg" alt="Living room">
+                    <img src="/assets/images/6.png" alt="Living room">
                 </div>
 
                 <div class="about-image about-image-small">
-                    <img src="/assets/images/kitchen.jpg" alt="Kitchen">
+                    <img src="/assets/images/5.png" alt="Kitchen">
                 </div>
 
                 <div class="about-feature">
@@ -37,7 +37,7 @@ export function Home() {
                 </div>
 
                 <div class="about-image about-image-small">
-                    <img src="/assets/images/balcony.jpg" alt="Balcony">
+                    <img src="/assets/images/10.png" alt="Balcony">
                 </div>
 
                 <div class="about-feature">

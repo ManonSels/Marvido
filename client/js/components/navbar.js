@@ -1,8 +1,8 @@
 export function Navbar(currentLang = "en") {
     const languages = {
-        en: "🌐 EN",
-        es: "🌐 ES",
-        nl: "🌐 NL"
+        en: "EN",
+        es: "ES",
+        nl: "NL"
     };
 
     const labels = {

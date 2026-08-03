@@ -3,7 +3,7 @@ export function Hero() {
         <section class="hero">
 
             <video class="hero-video" autoplay muted loop playsinline>
-                <source src="/assets/videos/herovideo.mp4" type="video/mp4">
+                <source src="/assets/videos/BannerMarvido.mp4" type="video/mp4">
             </video>
 
             <div class="hero-overlay"></div>
