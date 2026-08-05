@@ -1,9 +1,16 @@
 .container {
     max-width: var(--max-width);
-    margin: auto;
+    margin: 0 auto;
     padding: 0 40px;
 }
 
 .section {
     padding: 80px 0;
+}
+
+@media (max-width: 1370px) {
+    .container {
+        margin-left: calc(5% + 10px);
+        margin-right: calc(5% + 10px);
+    }
 }

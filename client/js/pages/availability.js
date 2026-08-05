@@ -11,7 +11,9 @@ export function Availability() {
                 <p>${t("availability.intro")}</p>
             </div>
 
-            <div id="availability-calendar" class="calendar"></div>
+            <div id="availability-calendar" class="calendar">
+                <p class="calendar-loading">${t("availability.loading") || "Loading calendar..."}</p>
+            </div>
 
         </section>
     `;
@@ -20,7 +22,16 @@ export function Availability() {
 let currentYear;
 let currentMonth;
 
-export async function initAvailability() {
+// Module-level cache — persists across SPA navigation since the module stays
+// loaded in memory, but resets naturally on a full page reload.
+let cache = null;
+let cacheTime = 0;
+const CACHE_TTL = 5 * 60 * 1000; // 5 minutes — bookings/prices don't change second-to-second
+
+async function getAvailabilityData() {
+    const isFresh = cache && (Date.now() - cacheTime < CACHE_TTL);
+    if (isFresh) return cache;
+
     const [bookingsRes, pricesRes] = await Promise.all([
         fetch("/api/availability"),
         fetch("/api/prices")
@@ -28,6 +39,15 @@ export async function initAvailability() {
 
     const bookings = await bookingsRes.json();
     const prices = await pricesRes.json();
+
+    cache = { bookings, prices };
+    cacheTime = Date.now();
+
+    return cache;
+}
+
+export async function initAvailability() {
+    const { bookings, prices } = await getAvailabilityData();
 
     const today = new Date();
     currentYear = today.getFullYear();

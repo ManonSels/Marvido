@@ -1,6 +1,27 @@
 .calendar {
     max-width: 400px;
     margin: 0 auto;
+
+    /* Reserves the full 6-row height up front, whether the calendar is
+       showing the "loading" placeholder or the real grid — so the footer
+       never jumps on first load, and never jumps again when switching
+       between 5-row and 6-row months. */
+    min-height: 460px;
+
+    /* Smooths over any tiny residual height change (e.g. sub-pixel
+       rounding) so it resolves as a gentle shift instead of a hard jump. */
+    transition: height 0.25s ease;
+}
+
+.calendar-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 460px;
+
+    color: #999;
+    font-size: 14px;
 }
 
 .calendar-header {
@@ -55,11 +76,14 @@
 .calendar-grid {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
+    grid-auto-rows: 52px;
     gap: 4px;
+
+    height: 336px; /* 6 rows × 52px + 5 gaps × 4px, locked regardless of content */
 }
 
 .calendar-day {
-    aspect-ratio: 1;
+    height: 52px;
 
     display: flex;
     flex-direction: column;
@@ -71,6 +95,8 @@
     border: 1px solid #eee;
 
     padding: 2px;
+
+    overflow: hidden;
 }
 
 .calendar-day-number {
@@ -84,6 +110,8 @@
     opacity: 0.8;
 
     margin-top: 2px;
+
+    white-space: nowrap;
 }
 
 .calendar-day.empty {

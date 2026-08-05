@@ -15,7 +15,7 @@ export function renderCalendar(containerId, year, month, bookings, options = {})
         onDayClick = null,
         onMonthChange = null,
         showStatus = false,
-        dayContent = null // optional: (dateStr) => string, rendered below the day number
+        dayContent = null
     } = options;
 
     const container = document.getElementById(containerId);
@@ -61,6 +61,15 @@ export function renderCalendar(containerId, year, month, bookings, options = {})
                 ${extra ? `<span class="calendar-day-extra">${extra}</span>` : ""}
             </div>
         `;
+    }
+
+    // Always pad out to exactly 42 cells (6 rows of 7). Without this, a
+    // 5-row month (like June) is shorter than a 6-row month (like August),
+    // which shifts the footer up/down every time the month changes.
+    const totalCellsSoFar = startWeekday + daysInMonth;
+    const trailingEmpty = 42 - totalCellsSoFar;
+    for (let i = 0; i < trailingEmpty; i++) {
+        html += `<div class="calendar-day empty"></div>`;
     }
 
     html += `</div>`;

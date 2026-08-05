@@ -4,6 +4,7 @@ import { Availability, initAvailability } from "./pages/availability.js";
 import { Location } from "./pages/location.js";
 import { Contact } from "./pages/contact.js";
 import { Admin, initAdmin } from "./pages/admin.js";
+import { stashHero, mountHero } from "./components/hero.js";
 
 
 const routes = {
@@ -22,14 +23,16 @@ export function Router() {
 
     const page = routes[path] || Home;
 
+    stashHero();
+
     document.querySelector("#app").innerHTML = page();
 
+    if (path === "/") mountHero();
     if (path === "/gallery") initGallery();
     if (path === "/availability") initAvailability();
     if (path === "/admin") initAdmin();
 
 }
-
 
 export function navigateTo(url) {
     history.pushState(null, null, url);
