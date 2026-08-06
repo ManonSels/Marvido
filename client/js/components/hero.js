@@ -1,6 +1,15 @@
 import { t } from "../utils/i18n.js";
 
 let heroEl = null;
+let isCurrentlyCompact = null; // tracks which version is currently loaded
+
+const COMPACT_BREAKPOINT = 1024;
+
+function getVideoPath(isCompact) {
+    return isCompact
+        ? "/assets/videos/BannerMarvido-mobile.webm"
+        : "/assets/videos/BannerMarvido.webm";
+}
 
 function createHeroVideoElement() {
     const video = document.createElement("video");
@@ -10,8 +19,10 @@ function createHeroVideoElement() {
     video.loop = true;
     video.playsInline = true;
 
+    isCurrentlyCompact = window.innerWidth <= COMPACT_BREAKPOINT;
+
     const webmSource = document.createElement("source");
-    webmSource.src = "/assets/videos/BannerMarvido.webm";
+    webmSource.src = getVideoPath(isCurrentlyCompact);
     webmSource.type = "video/webm";
 
     video.appendChild(webmSource);
@@ -27,6 +38,31 @@ function getHeroVideoElement() {
     if (!heroEl) heroEl = createHeroVideoElement();
     return heroEl;
 }
+
+// Re-checks whether we should be showing the square/mobile version or the
+// widescreen/desktop version, and swaps the source if the answer changed —
+// e.g. rotating a tablet, or resizing across the breakpoint without a
+// full page reload.
+function refreshHeroSource() {
+    if (!heroEl) return;
+
+    const shouldBeCompact = window.innerWidth <= COMPACT_BREAKPOINT;
+    if (shouldBeCompact === isCurrentlyCompact) return; // no change needed
+
+    isCurrentlyCompact = shouldBeCompact;
+
+    const source = heroEl.querySelector("source");
+    source.src = getVideoPath(isCurrentlyCompact);
+
+    heroEl.load();
+    heroEl.play().catch(() => {}); // autoplay can be blocked in some cases; ignore silently
+}
+
+let resizeTimeout;
+window.addEventListener("resize", () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(refreshHeroSource, 250); // debounced, so it doesn't fire constantly while dragging
+});
 
 export function mountHero() {
     const mount = document.getElementById("hero-video-mount");

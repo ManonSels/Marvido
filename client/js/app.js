@@ -7,6 +7,13 @@ function renderNavbar() {
     document.querySelector("#navbar").innerHTML = Navbar();
 }
 
+function closeMobileMenu() {
+    const navbar = document.querySelector(".navbar");
+    const menuButton = document.querySelector(".menu-toggle");
+    if (navbar) navbar.classList.remove("mobile-open");
+    if (menuButton) menuButton.classList.remove("active");
+}
+
 async function init() {
     // Load saved/default language BEFORE first render so text is correct from the start
     await loadLanguage(getCurrentLang());
@@ -19,6 +26,15 @@ async function init() {
 
 init();
 
+// Close the mobile menu the instant scrolling starts, so it can't be left
+// open (with its gap/overlap issues) while browsing the page underneath.
+window.addEventListener("scroll", () => {
+    const navbar = document.querySelector(".navbar");
+    if (navbar && navbar.classList.contains("mobile-open")) {
+        closeMobileMenu();
+    }
+}, { passive: true });
+
 
 document.addEventListener("click", async e => {
 
@@ -27,6 +43,7 @@ document.addEventListener("click", async e => {
 
     if (link) {
         e.preventDefault();
+        closeMobileMenu(); // slide the menu shut before/while navigating
         navigateTo(link.href);
     }
 

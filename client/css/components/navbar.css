@@ -150,14 +150,11 @@
     }
 
 
-    .nav-links,
-    .language-selector {
-        display: none;
-    }
+    /* Both panels are always in the DOM/layout now (not display:none),
+       just pushed off-screen with translateX. This is what lets them
+       animate — you can't transition "display", only transform/opacity. */
 
-
-    .navbar.mobile-open .nav-links {
-
+    .nav-links {
         display: flex;
         flex-direction: column;
         align-items: flex-end;
@@ -165,24 +162,33 @@
 
         position: fixed;
 
-        top: 80px;
+        top: 0;
         right: 0;
 
         width: calc(100px + 10%);
-        height: calc(100vh - 80px);
+        height: 100vh;
 
-        padding: 40px 30px;
+        padding: 110px 30px 40px;
 
         background: white;
 
         list-style: none;
 
         z-index: 5;
+
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+
+        pointer-events: none;
+    }
+
+    .navbar.mobile-open .nav-links {
+        transform: translateX(0);
+        pointer-events: auto;
     }
 
 
-    .navbar.mobile-open .language-selector {
-
+    .language-selector {
         display: block;
 
         position: fixed;
@@ -191,6 +197,18 @@
         bottom: 60px;
 
         z-index: 6;
+
+        transform: translateX(100%);
+        opacity: 0;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+
+        pointer-events: none;
+    }
+
+    .navbar.mobile-open .language-selector {
+        transform: translateX(0);
+        opacity: 1;
+        pointer-events: auto;
     }
 
     .navbar.mobile-open .language-dropdown {

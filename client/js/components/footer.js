@@ -18,7 +18,7 @@ export function Footer() {
                 </ul>
 
                 <div class="footer-socials">
-                    <a href="mailto:info@marvido.com" aria-label="Email">✉</a>
+                    <a href="mailto:bookmarvido@gmail.com" aria-label="Email">✉</a>
                     <a href="https://www.booking.com/hotel/es/pio-x.nl.html?aid=304142&label=gen173nr-10CAsoRkIFcGlvLXhIHFgEaEaIAQKYATO4AQfIAQ3YAQPoAQH4AQGIAgGoAgG4AuuLwtMGwAIB0gIkODk5NTU3NzktOTk2Ny00MGUwLWI0ZDktNmNmODQ4MTU3YmU52AIB4AIB-Share-i3DPsdq%401785759219" aria-label="Booking">B.</a>
                 </div>
 
