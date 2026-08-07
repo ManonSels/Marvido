@@ -1,6 +1,15 @@
 import { t } from "../utils/i18n.js";
 
 export function Location() {
+    document.title = "Marvido Apartment - Location";
+
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+        metaDescription.setAttribute(
+            "content",
+            "Find our Marvido Apartment in Jávea, Costa Blanca, Spain. Get directions and see the location."
+        );
+    }
     return `
         <section class="location container section">
 

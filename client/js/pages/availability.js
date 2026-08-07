@@ -2,6 +2,16 @@ import { renderCalendar } from "../components/calendar.js";
 import { t } from "../utils/i18n.js";
 
 export function Availability() {
+    document.title = "Marvido Apartment - Availability";
+
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+        metaDescription.setAttribute(
+            "content",
+            "Check availability and book your stay at Marvido Apartment in Jávea, Costa Blanca, Spain."
+        );
+    }
+
     return `
         <section class="availability container section">
 

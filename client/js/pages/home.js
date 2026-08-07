@@ -2,6 +2,15 @@ import { Hero } from "../components/hero.js";
 import { t } from "../utils/i18n.js";
 
 export function Home() {
+    document.title = "Marvido Apartment - Home";
+
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+        metaDescription.setAttribute(
+            "content",
+            "Discover the beautiful Marvido Apartment in Jávea, Costa Blanca, Spain."
+        );
+    }
     return `
         ${Hero()}
 

@@ -27,6 +27,16 @@ const images = [
 ];
 
 export function Gallery() {
+    document.title = "Marvido Apartment - Gallery";
+
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+        metaDescription.setAttribute(
+            "content",
+            "Browse our gallery to see the beautiful pictures of our Marvido Apartment in Jávea, Costa Blanca, Spain."
+        );
+    }
+
     return `
         <section class="gallery container section">
 

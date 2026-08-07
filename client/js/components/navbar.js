@@ -24,7 +24,7 @@ export function Navbar() {
             </div>
 
             <div class="language-selector">
-                <button class="language-toggle">${languages[currentLang]} ▼</button>
+                <button class="language-toggle" aria-label="Select language" aria-haspopup="true">${languages[currentLang]} ▼</button>
                 <ul class="language-dropdown">
                     ${otherLangs.map(lang => `
                         <li><button data-lang="${lang}">${t(`langLabels.${lang}`)}</button></li>
@@ -32,7 +32,7 @@ export function Navbar() {
                 </ul>
             </div>
 
-            <button class="menu-toggle">
+            <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>

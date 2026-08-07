@@ -19,6 +19,16 @@ const contactMethods = [
 ];
 
 export function Contact() {
+    document.title = "Marvido Apartment - Contact";
+
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+        metaDescription.setAttribute(
+            "content",
+            "Get in touch with Marvido Apartment in Jávea, Costa Blanca, Spain."
+        );
+    }
+
     return `
         <section class="contact container section">
 
